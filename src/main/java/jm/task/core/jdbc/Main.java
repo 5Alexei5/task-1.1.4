@@ -19,6 +19,5 @@ public class Main {
         System.out.println(users);
         userService.cleanUsersTable();
         userService.dropUsersTable();
-        Util.getSessionFactory().close();
     }
 }

@@ -29,8 +29,12 @@ public class Util {
                                                 String password) throws SQLException {
 
         String connectionURL = "jdbc:mysql://" + hostName + ":3306/" + dbName;
+        Connection connection = DriverManager.getConnection(connectionURL, userName, password);
+        if (connection.getAutoCommit()) {
+            connection.setAutoCommit(false);
+        }
 
-        return DriverManager.getConnection(connectionURL, userName, password);
+        return connection;
     }
 
     public static SessionFactory getSessionFactory() {
